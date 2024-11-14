@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css">
+
+
+</head>
+<body>
+
+    <div class="flex space-x-5 ">
+        <img class="thumb" src="https://i0.wp.com/picjumbo.com/wp-content/uploads/tree-with-brown-fall-leaves-against-blue-sky-free-image.jpg?w=210&quality=70" large="https://i0.wp.com/picjumbo.com/wp-content/uploads/tree-with-brown-fall-leaves-against-blue-sky-free-image.jpg?w=210&quality=70" alt="">
+        <img class="thumb" src="https://i0.wp.com/picjumbo.com/wp-content/uploads/hero-image-autumn-leaves-on-flat-blue-background-free-image.jpg?w=210&quality=70" large="https://i0.wp.com/picjumbo.com/wp-content/uploads/hero-image-autumn-leaves-on-flat-blue-background-free-image.jpg?w=1210&quality=70" alt="">
+        <img class="thumb" src="https://i0.wp.com/picjumbo.com/wp-content/uploads/autumn-leaves-on-flat-blue-background-with-room-for-text-free-image.jpg?w=210&quality=70" large="https://i0.wp.com/picjumbo.com/wp-content/uploads/autumn-leaves-on-flat-blue-background-with-room-for-text-free-image.jpg?w=1210&quality=70" alt="">
+    </div>
+
+
+    <div class="demo1"></div>
+
+
+
+    <div>
+        <input type="text" id="input" placeholder="Enter name" class="border-2 m-4 w-2/3 p-2">
+    </div>
+
+    <p>
+        <input type="text" id="input1" placeholder="Enter name">
+    </p>
+
+
+
+    <h1>Contact Form</h1>
+    <form id="contact" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <br>
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <ul class="ul">
+
+    </ul>
+
+
+
+    <h1>Select Dropdown Event</h1>
+    <select id="countries">
+        <option value="0" >Select a country</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="Nepal">Nepal</option>
+        <option value="Bhutan">Bhutan</option>
+        <option value="Maldives">Maldives</option>
+    </select>
+
+
+    <h1>select dropdown event</h1>
+    <input type="search" id="search" placeholder="Search">
+    <select id="countries1">
+        <option value="0">Select a country</option>
+    </select>
+
+
+    <script src="./countries.js"></script>
+
+
+   
+
+
+
+<script >
+
+    const images = document.querySelectorAll('.thumb');
+    const div = document.querySelector('.demo1');
+
+    images.forEach(image =>{
+
+        image.addEventListener('click',function(){
+            let largeImage = image.getAttribute('large');
+            console.log(largeImage);
+            const img = document.createElement('img');
+            img.src = largeImage;
+            img.style.width = '400';
+            img.style.objectFit = 'cover';
+            img.style.height = '400px';
+            div.innerHTML = '';
+            div.appendChild(img);
+        })
+
+    })
+
+    const input = document.getElementById('input');
+    input.addEventListener('input', function(event){
+        console.log(this.value)
+        console.log(event)
+    })
+
+    const input1 = document.getElementById('input1');
+    input1.addEventListener('keydown', function(event){
+
+        let keycode = event.keyCode;
+        console.log(keycode)
+        console.log(event)
+        
+    })
+
+
+    const contact = document.getElementById('contact');
+    contact.addEventListener('submit', function(event){
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        let ul = document.querySelector('.ul');
+        let li = document.createElement('li');
+        li.textContent = `Email: ${email}, Name: ${name}`;
+        ul.appendChild(li);
+        console.log(email,name)
+        event.preventDefault();
+    })
+
+
+    const dropdown = document.getElementById('countries1');
+    const search = document.getElementById('search');
+    
+    
+    
+
+    
+    search.addEventListener('input', function(){
+        searchValue = this.value;
+        dropdown.innerHTML = "<option value='0'>Select a country</option>"; 
+        option = "";
+        for(let i = 0; i < countryList.length; i++){
+            if( countryList[i].toLowerCase().startsWith(searchValue.toLowerCase())){
+                option += `<option value="${countryList[i]}">${countryList[i]}</option>`;
+            }
+
+        }
+        dropdown.innerHTML += option;
+       
+    })
+    
+    
+    dropdown.addEventListener('change',function(event){
+        console.log(this.value)
+        console.log(event)
+    })
+
+
+    let option = ''
+    countryList.forEach( country =>{
+        //const option = document.createElement('option');
+        //option.value = country;
+        //option.innerText = country;
+        //console.log(option)
+        //countries.appendChild(option);
+        option += `<option value="${country}">${country}</option>`;
+
+
+
+    })
+
+
+    dropdown.innerHTML = option;
+
+
+
+
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="click" style="height:200px;width:200px;">
+
+<script>
+    const div = document.getElementById('click');
+
+    div.addEventListener('mouseenter', function() {
+        console.log("Mouseenter");
+    });
+
+    div.addEventListener('mouseleave', function() {
+        console.log("Mouseleave");
+    });
+
+    div.addEventListener('click', function() {
+        console.log("Clicked");
+    });
+    div.addEventListener('dblclick', function() {
+        console.log("Double-clicked");
+    });
+    div.addEventListener('mousedown',function(){
+        console.log("Mouse Down,please realse me");
+
+    })
+
+    div.addEventListener('mouseup',function(){
+        console.log("Mouse Up,thank you for realing");
+    })
+
+    div.addEventListener('mousemove', function(event){
+        console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`);
+    })
+
+    div.addEventListener('mouseenter', function(){
+        const rendomRed = Math.random() * 255;
+        const rendomGreen = Math.random() * 255;
+        const rendomBlue = Math.random() * 255;
+        div.style.backgroundColor = `rgb(${rendomRed} ${rendomGreen} ${rendomBlue})`;
+    })
+
+
+</script>
+
+    
+</body>
+</html>

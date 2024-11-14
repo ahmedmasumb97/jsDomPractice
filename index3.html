@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <button id="click" >Click</button>
+    <div id="div">Hello World!</div>
+    <button type="button" id="demo1">click</button>
+
+  
+
+
+
+    <script>
+
+
+    const div = document.getElementById('click');
+    const div1 = document.getElementById('div');
+    div.addEventListener('click',myfunction);
+
+    function myfunction(){
+        console.log('Hello World!');
+        div1.style.color = 'red';
+        div1.style.fontSize = '30px';
+        div1.style.backgroundColor = 'yellow';
+    }
+
+
+    <!-- arrow function -->
+
+    const demo1 = document.getElementById('demo1');
+    demo1.addEventListener('click',event => {
+        console.log('Button clicked');
+    });
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

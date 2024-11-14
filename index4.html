@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css">
+
+
+    <title>Document</title>
+</head>
+<body>
+
+<h1>select country</h1>
+
+<select id="countries">
+    <option value="0">Select a country</option>
+</select>
+
+<script src="./data.js"></script>
+
+<table>
+    <tr>
+        <th>Country</th>
+        <th>Country Code</th>
+        <th>Mobile code</th>
+        <th>Time Zone</th>
+        <th>UTC</th>
+        <th>Flag</th>
+
+    </tr>
+
+    <tr>
+        <td id="countryName"></td>
+        <td id="code"></td>
+        <td id="mobile"></td>
+        <td id="timezone"></td>
+        <td id="utc"></td>
+        <td><img id="flag" src="" alt="flag" width="100"></td>
+    </tr>
+   
+</table>
+
+
+<script>
+
+let option = ''
+for(let i = 0; i < countries.length; i++) {
+
+    option += `<option value="${countries[i].name}">${countries[i].name}</option>`
+
+}
+
+document.getElementById('countries').innerHTML += option
+
+
+let dropdown = document.getElementById('countries')
+let name = document.getElementById("countryName")
+let code = document.getElementById("code")
+let mobile = document.getElementById("mobile")
+let timezone = document.getElementById("timezone")
+let utc = document.getElementById("utc")
+let flag = document.getElementById("flag")
+
+
+dropdown.addEventListener('change', function(){
+    console.log(this.value) // will print the selected country name
+
+    for(let i = 0; i < countries.length; i++){
+        if(countries[i].name === this.value){
+
+            name.innerText = countries[i].name
+            code.innerText = countries[i].code
+            mobile.innerText = countries[i].mobileCode
+            timezone.innerText = countries[i].timezone
+            utc.innerText = countries[i].utc
+            console.log(countries[i].https)
+            flag.src = countries[i].https
+
+            
+        }  
+    }
+})
+
+</script>
+</body>
+</html>
